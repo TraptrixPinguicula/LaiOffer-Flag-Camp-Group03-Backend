@@ -1,9 +1,10 @@
 # LaiOffer-flag_camp-team_3-202506
 
-鉴于各位时间并不充裕，本项目鼓励使用AI辅助开发以确保完成进度，但是请在使用AI的同时保证质量，提交之前检查代码和设计是否符合应用逻辑，尽可能减少bug，感谢理解。
-目前的后端设计请看下方章节。组内预计每周一发放任务，<ins>**美东时间下周一凌晨0点**</ins>为截止日期，请大家按时完成自己的部分。若未能按时完成，可能会视严重程度给予警告或**被踢出小组！！！**
-完成工作后请直接提交pull request，留给Tech Lead进行检查和merge。不要自己push！不要自己合并！
-有任何问题欢迎询问AI,或者私信Tech Lead询问AI，也可以直接在后端群里提出。
+鉴于各位时间并不充裕，本项目鼓励使用AI辅助开发以确保完成进度，但是请在使用AI的同时保证质量，提交之前检查代码和设计是否符合应用逻辑，尽可能减少bug，感谢理解。  
+目前的后端设计请看下方章节。组内预计每周一发放任务，<ins>**美东时间下周一凌晨0点**</ins>为截止日期，请大家按时完成自己的部分。若未能按时完成，可能会视严重程度给予警告或**被踢出小组！！！**  
+完成工作后请直接提交pull request，留给Tech Lead进行检查和merge。不要自己push！不要自己合并！  
+有任何问题欢迎询问AI,或者私信Tech Lead询问AI，也可以直接在后端群里提出。  
+repo内已有炯毅同学建立的Springboot接口， 数据库模板和连接配置在backend/src/main/resources里，各位可在本地自行修改。如果觉得模板有不妥之处欢迎提出。  
 
 ## Links
 
@@ -18,39 +19,40 @@ Google Doc link: https://docs.google.com/document/d/1hy0BSl47EQQU-yAn0IQzep72Lrw
 3. Platform: Java + Springboot
 
 ## Database Design 
-<img width="1406" height="1030" alt="image" src="https://github.com/user-attachments/assets/10205523-9e50-4d43-b6d5-19094effa675" />
+<img width="1378" height="1021" alt="image" src="https://github.com/user-attachments/assets/d5f0b917-15ac-4327-aa3b-05335bd50547" />
+
 
 
 
 
 ## Back-end Structure
-src/main/java/com/laioffer/flagcamp/backend
-├── controller       # 负责处理 API 请求
-│   ├── UserController.java
-│   ├── ItemController.java
-│   ├── PostController.java
-│   └── TagController.java
-│
-├── service          # 业务逻辑层
-│   ├── UserService.java
-│   ├── ItemService.java
-│   ├── PostService.java
-│   └── TagService.java
-│
-├── repository       # 数据库交互层 (JPA/Hibernate)
-│   ├── UserRepository.java
-│   ├── ItemRepository.java
-│   ├── PostRepository.java
-│   └── TagRepository.java
-│
-├── model            # 实体类 (对应数据库表)
-│   ├── User.java
-│   ├── Item.java
-│   ├── Post.java
-│   └── Tag.java
-│
-│
-└── BackendApplication.java  # 启动类
+src/main/java/com/laioffer/flagcamp/backend  
+├── controller       # 负责处理 API 请求  
+│   ├── UserController.java  
+│   ├── ItemController.java  
+│   ├── PostController.java  
+│   └── TagController.java  
+│  
+├── service          # 业务逻辑层  
+│   ├── UserService.java  
+│   ├── ItemService.java  
+│   ├── PostService.java  
+│   └── TagService.java  
+│  
+├── repository       # 数据库交互层 (JPA/Hibernate)  
+│   ├── UserRepository.java  
+│   ├── ItemRepository.java  
+│   ├── PostRepository.java  
+│   └── TagRepository.java  
+│  
+├── model            # 实体类 (对应数据库表)  
+│   ├── User.java  
+│   ├── Item.java  
+│   ├── Post.java  
+│   └── Tag.java  
+│  
+│  
+└── BackendApplication.java  # 启动类  
 
 ## API structure
 1. 用户 (Users)
