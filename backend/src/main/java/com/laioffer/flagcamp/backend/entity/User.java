@@ -3,7 +3,7 @@ package com.laioffer.flagcamp.backend.entity;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
-@Table("user")
+@Table("users")
 public record User(
         @Id Long userId,
         String password,
