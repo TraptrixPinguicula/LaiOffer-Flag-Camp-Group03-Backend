@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/marketplace
+    username: <yourusername>
+    password: <yourpassword>
+  jpa:
+    hibernate:
+      ddl-auto: update   # 自动建表 (create / update / validate / none)
+    show-sql: true        # 控制台显示 SQL
+    properties:
+      hibernate:
+        format_sql: true  # SQL 美化输出
+  server:
+    port: 8080
