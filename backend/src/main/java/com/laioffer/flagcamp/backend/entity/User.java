@@ -5,9 +5,13 @@ import org.springframework.data.relational.core.mapping.Table;
 
 @Table("user")
 public record User(
-        @Id Long id,
-        String email,
+        @Id Long userId,
         String password,
-        String name
+        String email,
+        Int phoneNum,
+        String address,
+        String userIcon,
+        String nickname,
+        String notes
 ) {
 }
