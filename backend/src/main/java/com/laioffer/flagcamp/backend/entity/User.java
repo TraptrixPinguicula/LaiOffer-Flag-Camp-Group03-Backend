@@ -8,7 +8,7 @@ public record User(
         @Id Long userId,
         String password,
         String email,
-        Int phoneNum,
+        Integer phoneNum,
         String address,
         String userIcon,
         String nickname,
