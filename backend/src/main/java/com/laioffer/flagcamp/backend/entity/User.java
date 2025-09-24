@@ -6,8 +6,8 @@ import org.springframework.data.relational.core.mapping.Table;
 @Table("users")
 public record User(
         @Id Long userId,
-        String password,
-        String email,
+        @NotNull String password,
+        @NotNull String email,
         Integer phoneNum,
         String address,
         String userIcon,
