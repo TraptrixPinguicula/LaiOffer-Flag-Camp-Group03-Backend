@@ -20,7 +20,7 @@ Google Doc link: https://docs.google.com/document/d/1hy0BSl47EQQU-yAn0IQzep72Lrw
 
 ## Database Design 
 <img width="1378" height="1021" alt="image" src="https://github.com/user-attachments/assets/d5f0b917-15ac-4327-aa3b-05335bd50547" />
-前面带钥匙的行是primary key前面带❉的行是unique key，后面带？的行是nullable的，用线连起来的是foreign key引用。
+前面带钥匙的行是primary key，前面带❉的行是unique key，后面带？的行是nullable的，用线连起来的是foreign key引用。
 
 
 
