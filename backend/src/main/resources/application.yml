@@ -1,8 +1,8 @@
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/marketplace
-    username: <yourusername>
-    password: <yourpassword>
+    username: postgres
+    password: admin123
   jpa:
     hibernate:
       ddl-auto: update   # 自动建表 (create / update / validate / none)

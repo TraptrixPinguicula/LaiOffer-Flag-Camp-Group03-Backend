@@ -22,6 +22,24 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    // 这是一个标准的Spring Web应用依赖
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // ✅【必需】为 @Table 和 @Id 注解提供支持
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+
+    // ✅【必需】为 @NotNull 注解提供支持
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // ✅【必需】PostgreSQL 数据库驱动，没有这个无法连接数据库
+    runtimeOnly 'org.postgresql:postgresql'
+
+    // (可选，但建议) 添加 Lombok 依赖，即使现在没用，以后也可能用到
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // security加密
+    implementation 'org.springframework.boot:spring-boot-starter-security'
 }
 
 tasks.named('test') {
