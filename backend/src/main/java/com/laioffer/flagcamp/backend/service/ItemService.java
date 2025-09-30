@@ -2,7 +2,7 @@ package com.laioffer.flagcamp.backend.service;
 
 import com.laioffer.flagcamp.backend.controller.ItemController.CreateItemReq;
 import com.laioffer.flagcamp.backend.controller.ItemController.UpdateItemReq;
-import com.laioffer.flagcamp.backend.model.Item;
+import com.laioffer.flagcamp.backend.entity.Item;
 import com.laioffer.flagcamp.backend.repository.ItemRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
