@@ -40,6 +40,7 @@ public class TagService {
 
     // 删除标签
     public void deleteTag(Long id) {
-        tagRepository.deleteById(id);
+        Tag tag = getTagById(id);
+        tagRepository.delete(tag);
     }
 }
