@@ -8,5 +8,6 @@ import java.util.Optional;
 
 @Repository
 public interface TagRepository extends ListCrudRepository<Tag, Long> {
+    Optional<Tag> findById(long tadId);
     Optional<Tag> findByTagContent(String tagContent);
 }
