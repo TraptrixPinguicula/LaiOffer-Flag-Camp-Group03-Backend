@@ -27,13 +27,15 @@ public class TagService {
     }
 
     // 根据ID获取标签
-    public Optional<Tag> getTagById(Long id) {
-        return tagRepository.findById(id);
+    public Tag getTagById(Long id) {
+        return tagRepository.findById(id)
+            .orElseThrow(() -> new TagNotFoundException("标签不存在");
     }
 
     // 根据内容获取标签
-    public Optional<Tag> getTagByContent(String content) {
-        return tagRepository.findByTagContent(content);
+    public Tag getTagByContent(String content) {
+        return tagRepository.findByTagContent(content)
+            .orElseThrow(() -> new TagNotFoundException("标签不存在");
     }
 
     // 删除标签
