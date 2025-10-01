@@ -14,10 +14,17 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
 
+    // 处理数据库约束异常
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<String> handleDataIntegrityViolation(DataIntegrityViolationException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+            .body("数据库约束错误: " + ex.getMostSpecificCause().getMessage());
+    }
+
     // 处理其他未捕获异常
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleAllExceptions(Exception ex) {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                             .body("服务器错误: " + ex.getMessage());
+            .body("服务器错误: " + ex.getMessage());
     }
 }
