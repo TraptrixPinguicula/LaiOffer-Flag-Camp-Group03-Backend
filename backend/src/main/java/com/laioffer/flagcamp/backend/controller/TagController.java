@@ -33,8 +33,7 @@ public class TagController {
     // GET /api/tags/{id} -> 根据ID获取标签
     @GetMapping("/{id}")
     public ResponseEntity<Tag> getTagById(@PathVariable Long id) {
-        Tag tag = tagService.getTagByIdOrThrow(id);
-        return ResponseEntity.ok(tag);
+        return ResponseEntity.ok(tagService.getTagById(id));
     }
 
     // DELETE /api/tags/{id} -> 删除标签
