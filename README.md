@@ -46,7 +46,7 @@ src/main/java/com/laioffer/flagcamp/backend
 │   ├── PostRepository.java  
 │   └── TagRepository.java  
 │  
-├── model            # 实体类 (对应数据库表)  
+├── entity           # 实体类 (对应数据库表)  
 │   ├── User.java  
 │   ├── Item.java  
 │   ├── Post.java  
