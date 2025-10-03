@@ -2,6 +2,7 @@ package com.laioffer.flagcamp.backend.service;
 
 import com.laioffer.flagcamp.backend.entity.Tag;
 import com.laioffer.flagcamp.backend.repository.TagRepository;
+import com.laioffer.flagcamp.backend.exception.TagNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
