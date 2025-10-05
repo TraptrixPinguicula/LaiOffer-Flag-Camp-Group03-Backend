@@ -15,7 +15,7 @@
 
 package com.laioffer.flagcamp.backend.controller;
 
-import com.laioffer.flagcamp.backend.model.Item;
+import com.laioffer.flagcamp.backend.entity.Item;
 import com.laioffer.flagcamp.backend.service.ItemService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.DecimalMin;
@@ -45,7 +45,7 @@ public class ItemController {
     private static final int MAX_SIZE = 50;
     private static final String DEFAULT_SORT = "itemId,desc";
     private static final Set<String> SORT_WHITELIST = Set.of(
-            "itemId", "itemName", "productPrice", "isSold"
+            "itemId", "itemName", "productPrice", "ifSold"
     );
 
     private final ItemService itemService;
