@@ -55,7 +55,7 @@ CREATE TABLE posts (
     postId SERIAL PRIMARY KEY,
     postedItemId INT NOT NULL,
     tagId INT,
-    postOwenerId INT NOT NULL,
+    postOwnerId INT NOT NULL,
     CONSTRAINT fk_post_item FOREIGN KEY (postedItemId) REFERENCES items(itemId) ON DELETE CASCADE,
     CONSTRAINT fk_post_tag FOREIGN KEY (tagId) REFERENCES tags(tagId) ON DELETE SET NULL,
     CONSTRAINT fk_post_owner FOREIGN KEY (postOwnerId) REFERENCES users(userId) ON DELETE CASCADE
