@@ -1,84 +1,70 @@
 package com.laioffer.flagcamp.backend.service;
 
 import com.laioffer.flagcamp.backend.entity.Post;
+import com.laioffer.flagcamp.backend.exception.ResourceNotFoundException;
 import com.laioffer.flagcamp.backend.repository.PostRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.StreamSupport;
+import java.util.Optional;
 
-/**
- * Post 服务层
- * 提供帖子相关的业务逻辑处理
- */
 @Service
 public class PostService {
-
+    private static final Logger logger = LoggerFactory.getLogger(PostService.class);
     private final PostRepository postRepository;
 
-    // 使用构造函数注入依赖
     public PostService(PostRepository postRepository) {
         this.postRepository = postRepository;
     }
 
     /**
-     * 创建新帖子
-     * @param post 帖子信息
-     * @return 保存后的帖子对象（包含自动生成的ID）
+     * 获取所有帖子，如果提供了 tagId，则按标签筛选
      */
-    @Transactional
-    public Post createPost(Post post) {
-        // 创建新帖子时，postId 应该为 null，由数据库自动生成
-        Post postToSave = new Post(
-                null,
-                post.postItemId(),
-                post.tagId(),
-                post.postOwnerId()
-        );
-        return postRepository.save(postToSave);
-    }
-
-    /**
-     * 获取所有帖子
-     * @return 所有帖子的列表
-     */
-    public List<Post> getAllPosts() {
-        // CrudRepository 的 findAll() 返回 Iterable，需要转换为 List
-        return StreamSupport.stream(postRepository.findAll().spliterator(), false)
-                .toList();
-    }
-
-    /**
-     * 根据用户ID获取该用户发布的所有帖子
-     * @param userId 用户ID
-     * @return 该用户发布的所有帖子列表
-     */
-    public List<Post> getPostsByUser(Long userId) {
-        // 将 Long 转换为 Integer，因为数据库字段是 int 类型
-        return postRepository.findByPostOwnerId(userId.intValue());
-    }
-
-    /**
-     * 根据标签ID获取所有带该标签的帖子
-     * @param tagId 标签ID
-     * @return 带有该标签的所有帖子列表
-     */
-    public List<Post> getPostsByTag(Long tagId) {
-        // 将 Long 转换为 Integer，因为数据库字段是 int 类型
-        return postRepository.findByTagId(tagId.intValue());
-    }
-
-    /**
-     * 删除指定ID的帖子
-     * @param postId 要删除的帖子ID
-     * @throws RuntimeException 如果帖子不存在
-     */
-    @Transactional
-    public void deletePost(Long postId) {
-        if (!postRepository.existsById(postId)) {
-            throw new RuntimeException("Post not found with id: " + postId);
+    public List<Post> getAllPosts(Optional<Integer> tagId) {
+        if (tagId.isPresent()) {
+            logger.info("Fetching posts with tagId: {}", tagId.get());
+            return postRepository.findByTagId(tagId.get());
+        } else {
+            logger.info("Fetching all posts.");
+            return (List<Post>) postRepository.findAll();
         }
+    }
+
+    /**
+     * 根据ID获取单个帖子的详情
+     */
+    public Post getPostById(Long postId) {
+        logger.info("Fetching post with ID: {}", postId);
+        return postRepository.findById(postId)
+                .orElseThrow(() -> new ResourceNotFoundException("Post not found with id: " + postId));
+    }
+
+    /**
+     * 创建一个新帖子
+     */
+    public Post createPost(Post post) {
+        logger.info("Creating a new post for ownerId: {}", post.postOwnerId());
+        return postRepository.save(post);
+    }
+
+    /**
+     * 删除一个帖子，并进行权限校验
+     */
+    public void deletePost(Long postId, Integer currentUserId) {
+        logger.info("Attempting to delete post with ID: {} by user: {}", postId, currentUserId);
+        Post post = getPostById(postId); // getPostById 会在帖子不存在时抛出异常
+
+        // 权限检查：确保只有帖子的所有者才能删除
+        if (!post.postOwnerId().equals(currentUserId)) {
+            logger.warn("Unauthorized delete attempt: User {} tried to delete post {} owned by {}",
+                    currentUserId, postId, post.postOwnerId());
+            // 在实际应用中，可以抛出一个更具体的权限异常
+            throw new SecurityException("User is not authorized to delete this post");
+        }
+
         postRepository.deleteById(postId);
+        logger.info("Successfully deleted post with ID: {}", postId);
     }
 }
