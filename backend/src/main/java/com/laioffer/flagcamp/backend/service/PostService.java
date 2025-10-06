@@ -44,14 +44,22 @@ public class PostService {
     /**
      * 创建一个新帖子
      */
+    @Transactional
     public Post createPost(Post post) {
         logger.info("Creating a new post for ownerId: {}", post.postOwnerId());
-        return postRepository.save(post);
+        Post postToSave = new Post(
+            null,
+            post.postItemId(),
+            post.tagId(),
+            post.postOwnerId()
+        );
+        return postRepository.save(postToSave);
     }
 
     /**
      * 删除一个帖子，并进行权限校验
      */
+    @Transactional
     public void deletePost(Long postId, Integer currentUserId) {
         logger.info("Attempting to delete post with ID: {} by user: {}", postId, currentUserId);
         Post post = getPostById(postId); // getPostById 会在帖子不存在时抛出异常
