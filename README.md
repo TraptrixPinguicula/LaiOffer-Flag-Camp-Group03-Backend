@@ -28,40 +28,40 @@ Google Doc link: https://docs.google.com/document/d/1hy0BSl47EQQU-yAn0IQzep72Lrw
 
 
 ## Back-end Structure
-src/main/java/com/laioffer/flagcamp/backend
-├── controller
-│ ├── UserController.java
-│ ├── ItemController.java
-│ ├── PostController.java
-│ ├── TagController.java
-│ ├── ConversationController.java
-│ └── MessageController.java
-│
-├── service
-│ ├── UserService.java
-│ ├── ItemService.java
-│ ├── PostService.java
-│ ├── TagService.java
-│ ├── ConversationService.java
-│ └── MessageService.java
-│
-├── repository
-│ ├── UserRepository.java
-│ ├── ItemRepository.java
-│ ├── PostRepository.java
-│ ├── TagRepository.java
-│ ├── ConversationRepository.java
-│ └── MessageRepository.java
-│
-├── entity
-│ ├── User.java
-│ ├── Item.java
-│ ├── Post.java
-│ ├── Tag.java
-│ ├── Conversation.java
-│ └── Message.java   
-│
-└── BackendApplication.java
+src/main/java/com/laioffer/flagcamp/backend  
+├── controller  
+│ ├── UserController.java  
+│ ├── ItemController.java  
+│ ├── PostController.java  
+│ ├── TagController.java  
+│ ├── ConversationController.java  
+│ └── MessageController.java  
+│  
+├── service  
+│ ├── UserService.java  
+│ ├── ItemService.java  
+│ ├── PostService.java  
+│ ├── TagService.java  
+│ ├── ConversationService.java  
+│ └── MessageService.java  
+│  
+├── repository  
+│ ├── UserRepository.java  
+│ ├── ItemRepository.java  
+│ ├── PostRepository.java  
+│ ├── TagRepository.java  
+│ ├── ConversationRepository.java  
+│ └── MessageRepository.java  
+│  
+├── entity  
+│ ├── User.java  
+│ ├── Item.java  
+│ ├── Post.java  
+│ ├── Tag.java  
+│ ├── Conversation.java  
+│ └── Message.java     
+│  
+└── BackendApplication.java  
  
 
 ## API structure
