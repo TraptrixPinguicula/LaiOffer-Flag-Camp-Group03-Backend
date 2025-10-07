@@ -5,7 +5,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Table("messages")
-public record Tag(
+public record Message(
         @Id Long messageId,
         @NotNull Long sellerId,
         @NotNull Long conversationId,
