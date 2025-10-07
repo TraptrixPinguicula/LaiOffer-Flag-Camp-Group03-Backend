@@ -117,13 +117,13 @@ public class ItemService {
     public Item updateItem(Long id, UpdateItemReq req) {
         Item existing = getById(id);
         Item updated = new Item(
-                existing.itemId(),
-                existing.itemOwnerId(),
-                req.itemName != null ? req.itemName : existing.itemName(),
-                req.productDetail != null ? req.productDetail : existing.productDetail(),
-                req.productPrice != null ? toSqlPrice(req.productPrice) : existing.productPrice(),
-                req.productImg != null ? req.productImg : existing.productImg(),
-                req.sold != null ? req.sold : existing.isSold()
+                existing.getItemId(),
+                existing.getItemOwnerId(),
+                req.itemName != null ? req.itemName : existing.getItemName(),
+                req.productDetail != null ? req.productDetail : existing.getProductDetail(),
+                req.productPrice != null ? toSqlPrice(req.productPrice) : existing.getProductPrice(),
+                req.productImg != null ? req.productImg : existing.getProductImg(),
+                req.sold != null ? req.sold : existing.getIfSold()
         );
         return itemRepository.save(updated);
     }

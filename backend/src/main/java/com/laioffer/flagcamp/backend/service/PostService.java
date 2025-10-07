@@ -1,5 +1,5 @@
 package com.laioffer.flagcamp.backend.service;
-
+import org.springframework.transaction.annotation.Transactional;
 import com.laioffer.flagcamp.backend.entity.Post;
 import com.laioffer.flagcamp.backend.exception.ResourceNotFoundException;
 import com.laioffer.flagcamp.backend.repository.PostRepository;
@@ -49,7 +49,7 @@ public class PostService {
         logger.info("Creating a new post for ownerId: {}", post.postOwnerId());
         Post postToSave = new Post(
             null,
-            post.postItemId(),
+            post.postedItemId(),
             post.tagId(),
             post.postOwnerId()
         );
