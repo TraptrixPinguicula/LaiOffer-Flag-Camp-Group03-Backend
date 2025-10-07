@@ -8,7 +8,7 @@ import org.springframework.data.relational.core.mapping.Table;
 public record Tag(
         @Id Long conversationId,
         @NotNull Long buyerId,
-        @NotNull Long sellerId
+        @NotNull Long sellerId,
         @NotNull LocalDateTime updatedAt
 ) {
 }
