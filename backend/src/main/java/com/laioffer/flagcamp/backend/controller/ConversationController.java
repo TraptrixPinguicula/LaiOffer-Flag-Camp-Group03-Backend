@@ -2,6 +2,7 @@ package com.laioffer.flagcamp.backend.controller;
 
 import com.laioffer.flagcamp.backend.entity.Conversation;
 import com.laioffer.flagcamp.backend.service.ConversationService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -17,14 +18,14 @@ public class ConversationController {
 
     // POST /api/conversations
     @PostMapping
-    public Conversation createConversation(@RequestParam Long buyerId, @RequestParam Long sellerId) {
-        return conversationService.createConversation(buyerId, sellerId);
+    public ResponseEntity<Conversation> createConversation(@RequestParam Long buyerId, @RequestParam Long sellerId) {
+        return ResponseEntity.ok(conversationService.createConversation(buyerId, sellerId));
     }
 
     // GET /api/conversations/{userId}
     @GetMapping("/{userId}")
-    public List<Conversation> getUserConversations(@PathVariable Long userId) {
-        return conversationService.getUserConversations(userId);
+    public ResponseEntity<List<Conversation>> getUserConversations(@PathVariable Long userId) {
+        return ResponseEntity.ok(conversationService.getUserConversations(userId));
     }
 
     // DELETE /api/conversations/{conversationId}
