@@ -2,6 +2,7 @@ package com.laioffer.flagcamp.backend.controller;
 
 import com.laioffer.flagcamp.backend.entity.Message;
 import com.laioffer.flagcamp.backend.service.MessageService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -26,8 +27,8 @@ public class MessageController {
 
     // GET /api/messages/{conversationId}
     @GetMapping("/{conversationId}")
-    public List<Message> getMessages(@PathVariable Long conversationId) {
-        return messageService.getMessages(conversationId);
+    public ResponseEntity<List<Message>> getMessages(@PathVariable Long conversationId) {
+        return ResponseEntity.ok(messageService.getMessages(conversationId));
     }
 
     // DELETE /api/messages/{messageId}
