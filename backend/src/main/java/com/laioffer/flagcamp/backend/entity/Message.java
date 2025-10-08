@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @Table("messages")
 public record Message(
         @Id Long messageId,
-        @NotNull Long sellerId,
+        @NotNull Long senderId,
         @NotNull Long conversationId,
         @NotNull String messageContent,
         @NotNull LocalDateTime createdAt
