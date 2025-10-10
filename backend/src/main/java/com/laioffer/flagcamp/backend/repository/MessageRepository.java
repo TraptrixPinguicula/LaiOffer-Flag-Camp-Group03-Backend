@@ -18,19 +18,19 @@ public interface MessageRepository extends CrudRepository<Message, Long> {
      * @param conversationId 会话ID
      * @return 该会话的所有消息列表
      */
-    List<Message> findByConversationId(Integer conversationId);
+    List<Message> findByConversationId(Long conversationId);
 
     /**
      * 根据发送者ID查询所有消息
      * @param senderId 发送者用户ID
      * @return 该用户发送的所有消息列表
      */
-    List<Message> findBySenderId(Integer senderId);
+    List<Message> findBySenderId(Long senderId);
 
     /**
      * 根据会话ID查询所有消息，按创建时间降序排列（最新的在最上面）
      * @param conversationId 会话ID
      * @return 该会话的所有消息列表（最新消息在前）
      */
-    List<Message> findByConversationIdOrderByCreatedAtDesc(Integer conversationId);
+    List<Message> findByConversationIdOrderByCreatedAtDesc(Long conversationId);
 }

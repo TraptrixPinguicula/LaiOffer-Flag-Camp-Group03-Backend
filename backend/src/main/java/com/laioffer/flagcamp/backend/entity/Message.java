@@ -36,7 +36,7 @@ public record Message(
     /**
      * 创建新消息的构造方法（不包含ID，由数据库自动生成）
      */
-    public static Message createNew(Integer senderId, Integer conversationId, String messageContent) {
+    public static Message createNew(Long senderId, Long conversationId, String messageContent) {
         return new Message(null, LocalDateTime.now(), senderId, conversationId, messageContent);
     }
 }

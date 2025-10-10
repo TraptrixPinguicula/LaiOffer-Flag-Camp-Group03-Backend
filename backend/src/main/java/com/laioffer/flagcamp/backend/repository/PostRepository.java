@@ -14,5 +14,5 @@ public interface PostRepository extends CrudRepository<Post, Long> {
      * @param tagId 标签ID
      * @return 匹配该标签的所有帖子的列表
      */
-    List<Post> findByTagId(Integer tagId);
+    List<Post> findByTagId(Long tagId);
 }

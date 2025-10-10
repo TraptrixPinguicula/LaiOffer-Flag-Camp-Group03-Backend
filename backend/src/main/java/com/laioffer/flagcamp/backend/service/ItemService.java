@@ -43,7 +43,7 @@ public class ItemService {
             "itemId", "itemid",
             "itemName", "itemname",
             "productPrice", "productprice",
-            "isSold", "ifsold"
+            "ifsold", "ifsold"
     );
 
     private final ItemRepository itemRepository;
@@ -151,7 +151,7 @@ public class ItemService {
                 "productdetail AS productDetail, " +
                 "productprice AS productPrice, " +
                 "productimg AS productImg, " +
-                "ifsold AS isSold";
+                "ifsold AS ifsold";
     }
 
     private static String buildOrderByClause(Sort sort) {

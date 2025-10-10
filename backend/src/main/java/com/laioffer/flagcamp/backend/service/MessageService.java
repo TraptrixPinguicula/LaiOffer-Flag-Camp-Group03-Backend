@@ -29,7 +29,7 @@ public class MessageService {
      * @return 保存后的消息对象（包含自动生成的ID和时间戳）
      */
     @Transactional
-    public Message sendMessage(Integer senderId, Integer conversationId, String content) {
+    public Message sendMessage(Long senderId, Long conversationId, String content) {
         // 使用静态工厂方法创建新消息，messageId 为 null 由数据库自动生成
         Message newMessage = Message.createNew(senderId, conversationId, content);
         return messageRepository.save(newMessage);
@@ -40,7 +40,7 @@ public class MessageService {
      * @param conversationId 会话ID
      * @return 该会话的所有消息列表，最新消息在前
      */
-    public List<Message> getMessagesByConversation(Integer conversationId) {
+    public List<Message> getMessagesByConversation(Long conversationId) {
         return messageRepository.findByConversationIdOrderByCreatedAtDesc(conversationId);
     }
 
@@ -73,7 +73,7 @@ public class MessageService {
      * @param senderId 发送者ID
      * @return 该用户发送的所有消息列表
      */
-    public List<Message> getMessagesBySender(Integer senderId) {
+    public List<Message> getMessagesBySender(Long senderId) {
         return messageRepository.findBySenderId(senderId);
     }
 }

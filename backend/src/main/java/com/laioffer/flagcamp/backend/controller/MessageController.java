@@ -1,5 +1,11 @@
 package com.laioffer.flagcamp.backend.controller;
 
+import org.springframework.validation.annotation.Validated;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import com.laioffer.flagcamp.backend.entity.Message;
 import com.laioffer.flagcamp.backend.service.MessageService;
 import org.springframework.http.ResponseEntity;
@@ -58,8 +64,8 @@ public class MessageController {
      * @return 该会话的所有消息列表，按创建时间降序排列（最新的在最上面）
      */
     @GetMapping("/{conversationId}")
-    public ResponseEntity<List<Message>> getMessages(@PathVariable Long conversationId) {
-        return ResponseEntity.ok(messageService.getMessages(conversationId));
+    public ResponseEntity<List<Message>> getMessagesByConversation(@PathVariable Long conversationId) {
+        return ResponseEntity.ok(messageService.getMessagesByConversation(conversationId));
     }
 
     /**

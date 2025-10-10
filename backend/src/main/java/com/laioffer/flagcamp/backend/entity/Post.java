@@ -12,13 +12,13 @@ public record Post(
         @Id Long postId,
 
         @Column("posteditemid")
-        Integer postedItemId,
+        Long postedItemId,
 
         @Column("tagid")
-        Integer tagId,
+        Long tagId,
 
         @Column("postownerid") // 注意：您的 SQL 中 owner 拼写为 owener
-        Integer postOwnerId
+        Long postOwnerId
 ) {
 }
 

@@ -22,7 +22,7 @@ public class PostService {
     /**
      * 获取所有帖子，如果提供了 tagId，则按标签筛选
      */
-    public List<Post> getAllPosts(Optional<Integer> tagId) {
+    public List<Post> getAllPosts(Optional<Long> tagId) {
         if (tagId.isPresent()) {
             logger.info("Fetching posts with tagId: {}", tagId.get());
             return postRepository.findByTagId(tagId.get());
@@ -60,7 +60,7 @@ public class PostService {
      * 删除一个帖子，并进行权限校验
      */
     @Transactional
-    public void deletePost(Long postId, Integer currentUserId) {
+    public void deletePost(Long postId, Long currentUserId) {
         logger.info("Attempting to delete post with ID: {} by user: {}", postId, currentUserId);
         Post post = getPostById(postId); // getPostById 会在帖子不存在时抛出异常
 
