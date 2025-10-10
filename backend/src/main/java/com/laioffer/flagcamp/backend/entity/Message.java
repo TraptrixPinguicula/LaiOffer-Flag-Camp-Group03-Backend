@@ -23,11 +23,11 @@ public record Message(
 
         @Column("senderid")
         @NotNull
-        Integer senderId,
+        Long senderId,
 
         @Column("conversationid")
         @NotNull
-        Integer conversationId,
+        Long conversationId,
 
         @Column("messagecontent")
         @NotNull

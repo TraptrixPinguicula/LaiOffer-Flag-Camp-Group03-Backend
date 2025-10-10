@@ -2,6 +2,7 @@ package com.laioffer.flagcamp.backend.controller;
 
 import com.laioffer.flagcamp.backend.entity.Message;
 import com.laioffer.flagcamp.backend.service.MessageService;
+
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -21,6 +22,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/messages")
 @Validated
+
 public class MessageController {
 
     private final MessageService messageService;
@@ -63,7 +65,7 @@ public class MessageController {
      * @return 该会话的所有消息列表，按创建时间降序排列（最新的在最上面）
      */
     @GetMapping("/{conversationId}")
-    public List<Message> getMessagesByConversation(@PathVariable Integer conversationId) {
+    public List<Message> getMessagesByConversation(@PathVariable Long conversationId) {
         return messageService.getMessagesByConversation(conversationId);
     }
 
@@ -88,18 +90,19 @@ public class MessageController {
          * 发送者用户ID（必填）
          */
         @NotNull(message = "发送者ID不能为空")
-        public Integer senderId;
+        public Long senderId;
 
         /**
          * 会话ID（必填）
          */
         @NotNull(message = "会话ID不能为空")
-        public Integer conversationId;
+        public Long conversationId;
 
         /**
          * 消息内容（必填，非空白）
          */
         @NotBlank(message = "消息内容不能为空")
         public String messageContent;
+
     }
 }
