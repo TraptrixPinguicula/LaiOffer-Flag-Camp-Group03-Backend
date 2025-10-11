@@ -126,7 +126,12 @@ INSERT INTO items (itemOwnerId, itemName, productDetail, productPrice, productIm
 INSERT INTO tags (tagContent) VALUES
 (1, 'electronics'),
 (2, 'laptop'),
-(3, 'camera');
+(3, 'camera'),
+(4, 'phone'),
+(5, 'furniture'),
+(6, 'home'),
+(7, 'book'),
+(8, 'appliance');
 
 -- posts (10)
 INSERT INTO posts (postedItemId, tagId, postOwnerId) VALUES
