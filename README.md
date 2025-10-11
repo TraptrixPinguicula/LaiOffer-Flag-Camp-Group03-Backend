@@ -120,3 +120,10 @@ POST	/api/messages	发送消息
 GET	/api/messages/{conversationId}	获取某个会话的所有消息
 
 DELETE	/api/messages/{messageId}	删除消息（可选）
+
+
+## RUN
+
+Direct to /backend, run '.\gradlew clean build -x test'.
+
+After a successful build, run '.\gradlew bootRun'.
