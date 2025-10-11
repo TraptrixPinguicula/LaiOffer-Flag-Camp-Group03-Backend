@@ -14,7 +14,7 @@ DROP TABLE IF EXISTS users;
 -- 1) users
 -- ======================
 CREATE TABLE users (
-    userId    SERIAL PRIMARY KEY,            -- int
+    userId    BIGSERIAL PRIMARY KEY,            -- int
     password  VARCHAR(255) NOT NULL,         -- varchar
     email     VARCHAR(255) NOT NULL UNIQUE,  -- ❉ email
     phoneNum  INT UNIQUE,                    -- ❉ phoneNum
@@ -28,11 +28,11 @@ CREATE TABLE users (
 -- 2) items
 -- ======================
 CREATE TABLE items (
-    itemId        SERIAL PRIMARY KEY,        -- int
-    itemOwnerId   INT NOT NULL,              -- FK → users.userId
+    itemId        BIGSERIAL PRIMARY KEY,        -- int
+    itemOwnerId   BIGINT NOT NULL,              -- FK → users.userId
     itemName      VARCHAR(100) NOT NULL,     -- varchar
     productDetail VARCHAR(500),              -- varchar? (nullable)
-    productPrice  FLOAT NOT NULL,            -- float
+    productPrice  NUMERIC(10,2) NOT NULL,            -- float
     productImg    VARCHAR(500),              -- varchar
     ifSold        BOOLEAN,                   -- boolean
     CONSTRAINT fk_item_owner
@@ -43,7 +43,7 @@ CREATE TABLE items (
 -- 3) tags
 -- ======================
 CREATE TABLE tags (
-    tagId       SERIAL PRIMARY KEY,          -- int
+    tagId       BIGSERIAL PRIMARY KEY,          -- int
     tagContent  VARCHAR(100) NOT NULL        -- varchar
 );
 
@@ -51,10 +51,10 @@ CREATE TABLE tags (
 -- 4) posts
 -- ======================
 CREATE TABLE posts (
-    postId        SERIAL PRIMARY KEY,        -- int
-    postedItemId  INT NOT NULL,              -- FK → items.itemId
-    tagId         INT,                       -- FK → tags.tagId (nullable)
-    postOwnerId   INT NOT NULL,              -- FK → users.userId
+    postId        BIGSERIAL PRIMARY KEY,        -- int
+    postedItemId  BIGINT NOT NULL,              -- FK → items.itemId
+    tagId         BIGINT,                       -- FK → tags.tagId (nullable)
+    postOwnerId   BIGINT NOT NULL,              -- FK → users.userId
     CONSTRAINT fk_post_item
         FOREIGN KEY (postedItemId) REFERENCES items(itemId) ON DELETE CASCADE,
     CONSTRAINT fk_post_tag
@@ -67,9 +67,9 @@ CREATE TABLE posts (
 -- 5) conversations
 -- ======================
 CREATE TABLE conversations (
-    conversationId SERIAL PRIMARY KEY,       -- int
-    buyerId        INT NOT NULL,             -- FK → users.userId
-    sellerId       INT NOT NULL,             -- FK → users.userId
+    conversationId BIGSERIAL PRIMARY KEY,       -- int
+    buyerId        BIGINT NOT NULL,             -- FK → users.userId
+    sellerId       BIGINT NOT NULL,             -- FK → users.userId
     updatedAt      TIMESTAMP DEFAULT NOW(),  -- timestamp
     CONSTRAINT fk_conv_buyer
         FOREIGN KEY (buyerId)  REFERENCES users(userId) ON DELETE CASCADE,
@@ -81,9 +81,9 @@ CREATE TABLE conversations (
 -- 6) messages
 -- ======================
 CREATE TABLE messages (
-    messageId      SERIAL PRIMARY KEY,       -- int
-    senderId       INT NOT NULL,             -- FK → users.userId
-    conversationId INT NOT NULL,             -- FK → conversations.conversationId
+    messageId      BIGSERIAL PRIMARY KEY,       -- int
+    senderId       BIGINT NOT NULL,             -- FK → users.userId
+    conversationId BIGINT NOT NULL,             -- FK → conversations.conversationId
     messageContent TEXT NOT NULL,            -- text
     createdAt      TIMESTAMP DEFAULT NOW(),  -- timestamp
     CONSTRAINT fk_msg_sender
@@ -97,17 +97,17 @@ CREATE TABLE messages (
 -- =========================================================
 
 -- users (10) 
-INSERT INTO users (password, email, phoneNum, address, userIcon, nickname, notes) VALUES
-('123456', 'alice@example.com', 1300000001, 'Beijing',  'UserIcon/UserIcon1.png',  'Alice',  'Buyer user'),
-('abcdef', 'bob@example.com',   1300000002, 'Shanghai', 'UserIcon/UserIcon2.png',  'Bob',    'Seller user'),
-('pass01', 'carol@example.com', 1300000003, 'Shenzhen', 'UserIcon/UserIcon3.png',  'Carol',  NULL),
-('pass02', 'dave@example.com',  1300000004, 'Hangzhou', 'UserIcon/UserIcon4.png',  'Dave',   NULL),
-('pass03', 'eve@example.com',   1300000005, 'Guangzhou', 'UserIcon/UserIcon5.png',  'Eve',    NULL),
-('pass04', 'frank@example.com', 1300000006, 'Chengdu',  'UserIcon/UserIcon6.png',  'Frank',  NULL),
-('pass05', 'grace@example.com', 1300000007, 'Nanjing',  'UserIcon/UserIcon7.png',  'Grace',  NULL),
-('pass06', 'heidi@example.com', 1300000008, 'Wuhan',    'UserIcon/UserIcon8.png',  'Heidi',  NULL),
-('pass07', 'ivan@example.com',  1300000009, 'Xian',     'UserIcon/UserIcon9.png',  'Ivan',   NULL),
-('pass08', 'judy@example.com',  1300000010, 'Suzhou',   'UserIcon/UserIcon10.png', 'Judy',   NULL);
+INSERT INTO users (userId, password, email, phoneNum, address, userIcon, nickname, notes) VALUES
+(1, '123456', 'alice@example.com', 1300000001, 'Beijing',  'UserIcon/UserIcon1.png',  'Alice',  'Buyer user'),
+(2, 'abcdef', 'bob@example.com',   1300000002, 'Shanghai', 'UserIcon/UserIcon2.png',  'Bob',    'Seller user'),
+(3, 'pass01', 'carol@example.com', 1300000003, 'Shenzhen', 'UserIcon/UserIcon3.png',  'Carol',  NULL),
+(4, 'pass02', 'dave@example.com',  1300000004, 'Hangzhou', 'UserIcon/UserIcon4.png',  'Dave',   NULL),
+(5, 'pass03', 'eve@example.com',   1300000005, 'Guangzhou', 'UserIcon/UserIcon5.png',  'Eve',    NULL),
+(6, 'pass04', 'frank@example.com', 1300000006, 'Chengdu',  'UserIcon/UserIcon6.png',  'Frank',  NULL),
+(7, 'pass05', 'grace@example.com', 1300000007, 'Nanjing',  'UserIcon/UserIcon7.png',  'Grace',  NULL),
+(8, 'pass06', 'heidi@example.com', 1300000008, 'Wuhan',    'UserIcon/UserIcon8.png',  'Heidi',  NULL),
+(9, 'pass07', 'ivan@example.com',  1300000009, 'Xian',     'UserIcon/UserIcon9.png',  'Ivan',   NULL),
+(10, 'pass08', 'judy@example.com',  1300000010, 'Suzhou',   'UserIcon/UserIcon10.png', 'Judy',   NULL);
 
 -- items (10) —— 图片链接需替换为真实地址
 INSERT INTO items (itemOwnerId, itemName, productDetail, productPrice, productImg, ifSold) VALUES
@@ -123,7 +123,7 @@ INSERT INTO items (itemOwnerId, itemName, productDetail, productPrice, productIm
 (10, 'Kindle Paperwhite',  '10th gen',                     599.00, 'Img/Icon10.png', FALSE);
 
 -- tags
-INSERT INTO tags (tagContent) VALUES
+INSERT INTO tags (tagId, tagContent) VALUES
 (1, 'electronics'),
 (2, 'laptop'),
 (3, 'camera'),

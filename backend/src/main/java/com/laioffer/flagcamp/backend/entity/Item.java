@@ -17,6 +17,7 @@ package com.laioffer.flagcamp.backend.entity;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
+import org.springframework.data.relational.core.mapping.Column;
 
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
@@ -29,29 +30,36 @@ public class Item {
 
     // Primary key 
     @Id
+    @Column("itemid")  
     private Long itemId;
 
     // Owner user id (FK to users.userId)
     @NotNull
+    @Column("itemownerid")
     private Long itemOwnerId;
 
     // Item name
     @NotBlank
+    @Column("itemname")
     private String itemName;
 
     // Optional detail/description
+    @Column("productdetail")
     private String productDetail;
 
     // Price, non-negative, use BigDecimal for precision
     @NotNull
     @DecimalMin("0.00")
+    @Column("productprice")
     private BigDecimal productPrice;
 
     // Image path or URL (DB stores path only)
+    @Column("productimg")
     private String productImg;
 
     // Whether the item has been sold
     @NotNull
+    @Column("ifsold")
     private Boolean ifSold = false;
 
     // ---- Constructors ----
