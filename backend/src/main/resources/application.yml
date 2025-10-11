@@ -11,5 +11,5 @@ logging:
     org.springframework.data.jdbc: TRACE        
     org.springframework.jdbc.support: TRACE
 
-  server:
-    port: 8080
+server:
+  port: 8080
