@@ -19,7 +19,7 @@ public record User(
         
         @NotNull
         @Column("phonenum")
-        Integer phoneNum,
+        Long phoneNum,
 
         @NotNull
         String address,
