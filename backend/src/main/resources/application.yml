@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/marketplace
     username: postgres
-    password: 19991118
+    password: <your_password>
 
 logging:
   level:
