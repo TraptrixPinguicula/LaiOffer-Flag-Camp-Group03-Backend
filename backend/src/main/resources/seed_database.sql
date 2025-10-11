@@ -17,8 +17,8 @@ CREATE TABLE users (
     userId    BIGSERIAL PRIMARY KEY,            -- int
     password  VARCHAR(255) NOT NULL,         -- varchar
     email     VARCHAR(255) NOT NULL UNIQUE,  -- ❉ email
-    phoneNum  BIGINT UNIQUE,                    -- ❉ phoneNum
-    address   VARCHAR(255),                  -- varchar
+    phoneNum  BIGINT NOT NULL UNIQUE,                    -- ❉ phoneNum
+    address   NOT NULL VARCHAR(255),                  -- varchar
     userIcon  VARCHAR(255),                  -- varchar? (nullable)
     nickname  VARCHAR(100),                  -- varchar? (nullable)
     notes     VARCHAR(255)                   -- varchar? (nullable)
@@ -33,7 +33,7 @@ CREATE TABLE items (
     itemName      VARCHAR(100) NOT NULL,     -- varchar
     productDetail VARCHAR(500),              -- varchar? (nullable)
     productPrice  NUMERIC(10,2) NOT NULL,            -- float
-    productImg    VARCHAR(500),              -- varchar
+    productImg    VARCHAR(500) NOT NULL,              -- varchar
     ifSold        BOOLEAN,                   -- boolean
     CONSTRAINT fk_item_owner
         FOREIGN KEY (itemOwnerId) REFERENCES users(userId) ON DELETE CASCADE
