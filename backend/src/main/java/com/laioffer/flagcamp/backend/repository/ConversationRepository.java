@@ -1,7 +1,9 @@
 package com.laioffer.flagcamp.backend.repository;
 
 import com.laioffer.flagcamp.backend.entity.Conversation;
+import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -10,13 +12,13 @@ import java.util.List;
 public interface ConversationRepository extends CrudRepository<Conversation, Long> {
 
     /**
-     * 自定义查询方法，用于查找某个用户作为买家或卖家参与的所有对话。
-     * Spring Data会根据方法名自动生成 SQL 查询，等价于：
-     * SELECT * FROM conversations WHERE buyer_id = :buyerId OR seller_id = :sellerId
-     *
-     * @param buyerId  用户的ID（当他是买家时）
-     * @param sellerId 用户的ID（当他是卖家时）
-     * @return 该用户参与的所有对话列表
+     * 手写 SQL 避免不同数据库的标识符大小写、引号差异导致的语法错误。
+     * 这里不包裹引号，让数据库按照自身规则解析列名。
      */
-    List<Conversation> findByBuyerIdOrSellerId(Long buyerId, Long sellerId);
+    @Query("""
+            SELECT *
+            FROM conversations
+            WHERE buyerid = :userId OR sellerid = :userId
+            """)
+    List<Conversation> findConversationsForUser(@Param("userId") Long userId);
 }
