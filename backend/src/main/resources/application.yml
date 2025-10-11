@@ -3,6 +3,12 @@ spring:
     url: jdbc:postgresql://localhost:5432/marketplace
     username: laioffer
     password: laioffer
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
+      data-locations: classpath:data.sql
+      continue-on-error: true
 
 logging:
   level:
@@ -10,6 +16,5 @@ logging:
     org.springframework.jdbc.core: TRACE        
     org.springframework.data.jdbc: TRACE        
     org.springframework.jdbc.support: TRACE
-
-  server:
-    port: 8080
+server:
+  port: 8080
