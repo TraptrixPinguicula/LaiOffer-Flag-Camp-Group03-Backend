@@ -122,10 +122,11 @@ INSERT INTO items (itemOwnerId, itemName, productDetail, productPrice, productIm
 (9,  'AirPods Pro',        '2nd gen, clean',              999.00, 'https://picsum.photos/seed/p9/600/400',  FALSE),
 (10, 'Kindle Paperwhite',  '10th gen',                     599.00, 'https://picsum.photos/seed/p10/600/400', FALSE);
 
--- tags (10)
+-- tags
 INSERT INTO tags (tagContent) VALUES
-('electronics'),('phone'),('laptop'),('camera'),('audio'),
-('gaming'),('furniture'),('home'),('book'),('appliance');
+(1, 'electronics'),
+(2, 'laptop'),
+(3, 'camera');
 
 -- posts (10)
 INSERT INTO posts (postedItemId, tagId, postOwnerId) VALUES
