@@ -1,13 +1,15 @@
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/marketplace
-    username: <yourusername>
-    password: <yourpassword>
+    username: postgres
+    password: 19991118
 
 logging:
   level:
     com.laioffer.flagcamp.backend: DEBUG
-    org.springframework.jdbc.core: DEBUG
+    org.springframework.jdbc.core: TRACE        
+    org.springframework.data.jdbc: TRACE        
+    org.springframework.jdbc.support: TRACE
 
   server:
     port: 8080
