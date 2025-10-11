@@ -17,7 +17,7 @@ CREATE TABLE users (
     userId    BIGSERIAL PRIMARY KEY,            -- int
     password  VARCHAR(255) NOT NULL,         -- varchar
     email     VARCHAR(255) NOT NULL UNIQUE,  -- ❉ email
-    phoneNum  INT UNIQUE,                    -- ❉ phoneNum
+    phoneNum  BIGINT UNIQUE,                    -- ❉ phoneNum
     address   VARCHAR(255),                  -- varchar
     userIcon  VARCHAR(255),                  -- varchar? (nullable)
     nickname  VARCHAR(100),                  -- varchar? (nullable)
@@ -109,6 +109,8 @@ INSERT INTO users (userId, password, email, phoneNum, address, userIcon, nicknam
 (9, 'pass07', 'ivan@example.com',  1300000009, 'Xian',     'UserIcon/UserIcon9.png',  'Ivan',   NULL),
 (10, 'pass08', 'judy@example.com',  1300000010, 'Suzhou',   'UserIcon/UserIcon10.png', 'Judy',   NULL);
 
+SELECT setval('users_userid_seq', (SELECT MAX(userId) FROM users));
+
 -- items (10) —— 图片链接需替换为真实地址
 INSERT INTO items (itemOwnerId, itemName, productDetail, productPrice, productImg, ifSold) VALUES
 (2,  'iPhone 13 128GB',    'Blue, good condition',       4999.00, 'Img/Icon1.png',  FALSE),
@@ -122,6 +124,7 @@ INSERT INTO items (itemOwnerId, itemName, productDetail, productPrice, productIm
 (9,  'AirPods Pro',        '2nd gen, clean',              999.00, 'Img/Icon9.png',  FALSE),
 (10, 'Kindle Paperwhite',  '10th gen',                     599.00, 'Img/Icon10.png', FALSE);
 
+SELECT setval('items_itemid_seq', (SELECT MAX(itemId) FROM items));
 -- tags
 INSERT INTO tags (tagId, tagContent) VALUES
 (1, 'electronics'),
@@ -134,6 +137,8 @@ INSERT INTO tags (tagId, tagContent) VALUES
 (8, 'appliance'),
 (9, 'gaming'),
 (10, 'audio');
+
+SELECT setval('tags_tagid_seq', (SELECT MAX(tagId) FROM tags));
 
 -- posts (10)
 INSERT INTO posts (postedItemId, tagId, postOwnerId) VALUES
@@ -148,9 +153,13 @@ INSERT INTO posts (postedItemId, tagId, postOwnerId) VALUES
 (9,  1, 9),
 (10, 9, 10);
 
+SELECT setval('posts_postid_seq', (SELECT MAX(postId) FROM posts));
+
 -- conversations (10)
 INSERT INTO conversations (buyerId, sellerId) VALUES
 (1,2),(3,2),(1,4),(5,4),(9,8),(10,9),(6,7),(3,5),(8,7),(2,10);
+
+SELECT setval('conversations_conversationid_seq', (SELECT MAX(conversationId) FROM conversations));
 
 -- messages (10)
 INSERT INTO messages (senderId, conversationId, messageContent) VALUES
@@ -164,3 +173,5 @@ INSERT INTO messages (senderId, conversationId, messageContent) VALUES
 (4, 4, 'Slightly negotiable.'),
 (9, 5, 'Does the Canon include kit lens?'),
 (8, 5, 'Yes, included.');
+
+SELECT setval('messages_messageid_seq', (SELECT MAX(messageId) FROM messages));
