@@ -98,29 +98,29 @@ CREATE TABLE messages (
 
 -- users (10) 
 INSERT INTO users (password, email, phoneNum, address, userIcon, nickname, notes) VALUES
-('123456', 'alice@example.com', 1300000001, 'Beijing',  'https://picsum.photos/seed/u1/200/200',  'Alice',  'Buyer user'),
-('abcdef', 'bob@example.com',   1300000002, 'Shanghai', 'https://picsum.photos/seed/u2/200/200',  'Bob',    'Seller user'),
-('pass01', 'carol@example.com', 1300000003, 'Shenzhen', 'https://picsum.photos/seed/u3/200/200',  'Carol',  NULL),
-('pass02', 'dave@example.com',  1300000004, 'Hangzhou', 'https://picsum.photos/seed/u4/200/200',  'Dave',   NULL),
-('pass03', 'eve@example.com',   1300000005, 'Guangzhou','https://picsum.photos/seed/u5/200/200',  'Eve',    NULL),
-('pass04', 'frank@example.com', 1300000006, 'Chengdu',  'https://picsum.photos/seed/u6/200/200',  'Frank',  NULL),
-('pass05', 'grace@example.com', 1300000007, 'Nanjing',  'https://picsum.photos/seed/u7/200/200',  'Grace',  NULL),
-('pass06', 'heidi@example.com', 1300000008, 'Wuhan',    'https://picsum.photos/seed/u8/200/200',  'Heidi',  NULL),
-('pass07', 'ivan@example.com',  1300000009, 'Xian',     'https://picsum.photos/seed/u9/200/200',  'Ivan',   NULL),
-('pass08', 'judy@example.com',  1300000010, 'Suzhou',   'https://picsum.photos/seed/u10/200/200', 'Judy',   NULL);
+('123456', 'alice@example.com', 1300000001, 'Beijing',  'UserIcon/UserIcon1.png',  'Alice',  'Buyer user'),
+('abcdef', 'bob@example.com',   1300000002, 'Shanghai', 'UserIcon/UserIcon2.png',  'Bob',    'Seller user'),
+('pass01', 'carol@example.com', 1300000003, 'Shenzhen', 'UserIcon/UserIcon3.png',  'Carol',  NULL),
+('pass02', 'dave@example.com',  1300000004, 'Hangzhou', 'UserIcon/UserIcon4.png',  'Dave',   NULL),
+('pass03', 'eve@example.com',   1300000005, 'Guangzhou', 'UserIcon/UserIcon5.png',  'Eve',    NULL),
+('pass04', 'frank@example.com', 1300000006, 'Chengdu',  'UserIcon/UserIcon6.png',  'Frank',  NULL),
+('pass05', 'grace@example.com', 1300000007, 'Nanjing',  'UserIcon/UserIcon7.png',  'Grace',  NULL),
+('pass06', 'heidi@example.com', 1300000008, 'Wuhan',    'UserIcon/UserIcon8.png',  'Heidi',  NULL),
+('pass07', 'ivan@example.com',  1300000009, 'Xian',     'UserIcon/UserIcon9.png',  'Ivan',   NULL),
+('pass08', 'judy@example.com',  1300000010, 'Suzhou',   'UserIcon/UserIcon10.png', 'Judy',   NULL);
 
 -- items (10) —— 图片链接需替换为真实地址
 INSERT INTO items (itemOwnerId, itemName, productDetail, productPrice, productImg, ifSold) VALUES
-(2,  'iPhone 13 128GB',    'Blue, good condition',       4999.00, 'https://picsum.photos/seed/p1/600/400',  FALSE),
-(2,  'Samsung Galaxy S21', 'Black, 256GB',               3799.00, 'https://picsum.photos/seed/p2/600/400',  TRUE),
-(3,  'Nintendo Switch',    'Neon, with case',            1999.00, 'https://picsum.photos/seed/p3/600/400',  FALSE),
-(4,  'MacBook Air 2019',   '8GB/256GB, minor scratches', 5299.00, 'https://picsum.photos/seed/p4/600/400',  FALSE),
-(5,  'Sony WH-1000XM4',    'Noise cancelling',            899.00, 'https://picsum.photos/seed/p5/600/400',  TRUE),
-(6,  'IKEA Desk',          '120x60 cm, white',             399.00, 'https://picsum.photos/seed/p6/600/400',  FALSE),
-(7,  'Dyson V8 Vacuum',    'Works great',                1499.00, 'https://picsum.photos/seed/p7/600/400',  FALSE),
-(8,  'Canon EOS M50',      'With kit lens',              3499.00, 'https://picsum.photos/seed/p8/600/400',  TRUE),
-(9,  'AirPods Pro',        '2nd gen, clean',              999.00, 'https://picsum.photos/seed/p9/600/400',  FALSE),
-(10, 'Kindle Paperwhite',  '10th gen',                     599.00, 'https://picsum.photos/seed/p10/600/400', FALSE);
+(2,  'iPhone 13 128GB',    'Blue, good condition',       4999.00, 'Img/Icon1.png',  FALSE),
+(2,  'Samsung Galaxy S21', 'Black, 256GB',               3799.00, 'Img/Icon2.png',  TRUE),
+(3,  'Nintendo Switch',    'Neon, with case',            1999.00, 'Img/Icon3.png',  FALSE),
+(4,  'MacBook Air 2019',   '8GB/256GB, minor scratches', 5299.00, 'Img/Icon4.png',  FALSE),
+(5,  'Sony WH-1000XM4',    'Noise cancelling',            899.00, 'Img/Icon5.png',  TRUE),
+(6,  'IKEA Desk',          '120x60 cm, white',             399.00, 'Img/Icon6.png',  FALSE),
+(7,  'Dyson V8 Vacuum',    'Works great',                1499.00, 'Img/Icon7.png',  FALSE),
+(8,  'Canon EOS M50',      'With kit lens',              3499.00, 'Img/Icon8.png',  TRUE),
+(9,  'AirPods Pro',        '2nd gen, clean',              999.00, 'Img/Icon9.png',  FALSE),
+(10, 'Kindle Paperwhite',  '10th gen',                     599.00, 'Img/Icon10.png', FALSE);
 
 -- tags
 INSERT INTO tags (tagContent) VALUES
@@ -131,7 +131,9 @@ INSERT INTO tags (tagContent) VALUES
 (5, 'furniture'),
 (6, 'home'),
 (7, 'book'),
-(8, 'appliance');
+(8, 'appliance'),
+(9, 'gaming'),
+(10, 'audio');
 
 -- posts (10)
 INSERT INTO posts (postedItemId, tagId, postOwnerId) VALUES
