@@ -124,6 +124,6 @@ DELETE	/api/messages/{messageId}	删除消息（可选）
 
 ## RUN
 
-Direct to /backend, run '.\gradlew clean build -x test'.
+Direct to /backend, run `.\gradlew clean build -x test`.
 
-After a successful build, run '.\gradlew bootRun'.
+After a successful build, run `.\gradlew bootRun`.
