@@ -44,7 +44,9 @@ public class ConversationService {
         // 调用我们自定义的 repository 方法。
         // 将同一个 userId 同时传给 buyerId 和 sellerId 参数，
         // Spring Data 会执行 "WHERE buyer_id = ? OR seller_id = ?" 的查询。
-        return conversationRepository.findByBuyerIdOrSellerId(userId, userId);
+	return conversationRepository.findByBuyerIdOrSellerId(userId, userId);
+
+
     }
 
     /**
